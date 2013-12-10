@@ -9,6 +9,18 @@ package ch.rewop.bildkombinierer;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>middle</code></td><td>0</td><td></td></tr>
+<tr><td><code>left</code></td><td>1</td><td></td></tr>
+<tr><td><code>right</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int layout_position=0x7f010000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -17,25 +29,50 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int btn_crop_operator=0x7f020000;
+        public static final int btn_crop_pressed=0x7f020001;
+        public static final int camera_crop_height=0x7f020002;
+        public static final int camera_crop_width=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int ic_rotate_left=0x7f020005;
+        public static final int ic_rotate_right=0x7f020006;
+        public static final int indicator_autocrop=0x7f020007;
+        public static final int selector_crop_button=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f070009;
+        public static final int discard=0x7f070005;
+        public static final int image=0x7f070004;
+        public static final int left=0x7f070001;
+        public static final int mainlayout=0x7f070003;
+        public static final int middle=0x7f070000;
+        public static final int right=0x7f070002;
+        public static final int rotateLeft=0x7f070006;
+        public static final int rotateRight=0x7f070007;
+        public static final int save=0x7f070008;
     }
     public static final class layout {
         public static final int activity_erfasser=0x7f030000;
+        public static final int cropimage=0x7f030001;
+        public static final int main=0x7f030002;
     }
     public static final class menu {
-        public static final int erfasser=0x7f070000;
+        public static final int erfasser=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int action_settings=0x7f040007;
+        public static final int app_name=0x7f040006;
+        public static final int cancel=0x7f040000;
+        public static final int hello_world=0x7f040008;
+        public static final int no_storage_card=0x7f040004;
+        public static final int not_enough_space=0x7f040005;
+        public static final int preparing_card=0x7f040003;
+        public static final int save=0x7f040001;
+        public static final int saving_image=0x7f040002;
     }
     public static final class style {
         /** 
@@ -59,10 +96,52 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f050001;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f050002;
+        public static final int CropButton=0x7f050000;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a CustomLayoutLP.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomLayoutLP_android_layout_gravity android:layout_gravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomLayoutLP_layout_position ch.rewop.bildkombinierer:layout_position}</code></td><td></td></tr>
+           </table>
+           @see #CustomLayoutLP_android_layout_gravity
+           @see #CustomLayoutLP_layout_position
+         */
+        public static final int[] CustomLayoutLP = {
+            0x010100b3, 0x7f010000
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#layout_gravity}
+          attribute's value can be found in the {@link #CustomLayoutLP} array.
+          @attr name android:layout_gravity
+        */
+        public static final int CustomLayoutLP_android_layout_gravity = 0;
+        /**
+          <p>This symbol is the offset where the {@link ch.rewop.bildkombinierer.R.attr#layout_position}
+          attribute's value can be found in the {@link #CustomLayoutLP} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>middle</code></td><td>0</td><td></td></tr>
+<tr><td><code>left</code></td><td>1</td><td></td></tr>
+<tr><td><code>right</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name ch.rewop.bildkombinierer:layout_position
+        */
+        public static final int CustomLayoutLP_layout_position = 1;
+    };
 }

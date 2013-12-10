@@ -16,5 +16,14 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <declare-styleable name="CustomLayoutLP">
+    <attr name="android:layout_gravity" />
+    <attr name="layout_position">
+        <enum name="middle" value="0" />
+        <enum name="left" value="1" />
+        <enum name="right" value="2" />
+    </attr>
+</declare-styleable>
 
 </resources>
