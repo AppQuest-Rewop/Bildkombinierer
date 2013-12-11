@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -21,8 +24,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Erfasser extends Activity {
@@ -31,6 +36,7 @@ public class Erfasser extends Activity {
 	private Uri uriImage;
 	private Uri uriFolder;
 	private CustomLayout cl;
+	private AlertDialog.Builder alert;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,15 @@ public class Erfasser extends Activity {
 			}
 		});
 
+		MenuItem menuItem_logbuch = menu.add("Logbuch-Eintrag");
+		menuItem_logbuch.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				sendAlert();
+				return false;
+			}
+		});
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -233,6 +248,48 @@ public class Erfasser extends Activity {
 	 
 	    // return final image
 	    return bmOut;
+	}
+	
+	//eintrag in logbuch
+			private void sendlog(String lwort) {
+				Intent intent = new Intent("ch.appquest.intent.LOG");
+				 
+				if (getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).isEmpty()) {
+					Toast.makeText(this, "Logbook App not Installed", Toast.LENGTH_LONG).show();
+				return;
+				}
+				 
+				intent.putExtra("ch.appquest.taskname", "REWOP.Bildkombinierer");
+				intent.putExtra("ch.appquest.logmessage", lwort);
+				 
+				startActivity(intent);
+			}
+	private void sendAlert(){
+
+
+		//AlertDialog
+		alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Logbuch-Eintrag");
+		alert.setMessage("Lösungswort eintragen");
+
+		// Set an EditText view to get user input 
+		final EditText input = new EditText(this);
+		alert.setView(input);
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  String lwort = (String) input.getText().toString();
+		  sendlog(lwort);
+		  }
+		});
+
+		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    // Canceled.
+		  }
+		});
+		alert.show();
 	}
 
 }
